@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotation Generator - HAL POWER CONVERSION</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../nav.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="icon" href="../Hal-removebg-preview.png" type="image/png">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Hal Power Conversion</div>
+        <ul class="nav-links">
+            <li><a href="../main.html">Home</a></li>
+            <li><a href="../Tax Invoice Generator/index.html">Invoice</a></li>
+            <li><a href="../Quotation Generator/index.html">Quotation</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            ☰
+        </div>
+        
+    </nav>
+    <div class="container">
+        <h1>Quotation Generator</h1>
+        <form id="quotationForm">
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName" required>
+            </div>
+            <div class="form-group">
+                <label for="customerAddress">Customer Address:</label>
+                <textarea id="customerAddress" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" required>
+            </div>
+            <h2>Items</h2>
+            <table id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>Item & Description</th>
+                        <th>Qty</th>
+                        <th>Rate</th>
+                        <th>CGST %</th>
+                        <th>SGST %</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="itemsBody"></tbody>
+            </table>
+            <button type="button" onclick="addItem()">Add Item</button>
+            <h2>Terms and Conditions</h2>
+            <div class="form-group">
+                <label for="termsAndConditions">Edit Terms and Conditions:</label>
+                <textarea id="termsAndConditions" rows="10">
+Terms and Conditions:
+• Quotation Validity: 
+The Quotation will remain valid for 30 days from the date of issuance
+• Delivery Lead Time: 
+Delivery will be completed within three working days from the date if the Purchase Order (PO)
+• Payment Terms: 
+100% payment in advance is required prior to processing the order
+• Payment Terms: 
+50% of the total amount is required as an advance payment to initiate the order. The remaining 50% will be payable upon the completion of the work.
+• Warranty Coverage: 
+o Two Years warranty for batteries.
+o One – Year warranty for inverters and UPS.
+• Installation & Commissioning: 
+Installation and commissioning services are included in the price (if applicable).
+• Freight Charges: 
+Freight charges will be additional unless otherwise specified in the proposal.
+                </textarea>
+            </div>
+            <div class="button-group">
+                <button type="button" onclick="generateQuotation()">Generate Quotation</button>
+                <button type="button" onclick="saveAsPDF()">Save as PDF</button>
+                <button type="button" onclick="printQuotation()">Print Quotation</button>
+            </div>
+        </form>
+        <div id="quotationPreview"></div>
+        <center>
+            <div>
+                <button style="margin-top: 10px;"><a href="../main.html" style="text-decoration: none; color: white;">Back</a></button>
+            </div>
+        </center>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAL Power Conversion Invoice Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <link rel="icon" href="Hal-removebg-preview (2).png" type="image/png">
+    <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <nav class="navbar" >
+        <div class="logo">Hal Power Conversion</div>
+        <ul class="nav-links">
+            <li><a href="../main.html">Home</a></li>
+            <li><a href="../Tax Invoice Generator/index.html">Invoice</a></li>
+            <li><a href="../Quotation Generator/index.html">Quotation</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            ☰
+        </div>
+        
+    </nav>
+    <div class="container">
+        <h1 style="text-align: center; font-size: 50px; color: red;">HAL Power Conversion Invoice Generator</h1>
+        
+        <div class="form-section">
+            <h2>Company Details</h2>
+            <div class="form-group">
+                <label for="companyName">Company Name:</label>
+                <input type="text" id="companyName" value="HAL POWER CONVERSION">
+            </div>
+            <div class="form-group">
+                <label for="companyAddress">Company Address:</label>
+                <input type="text" id="companyAddress" value="NO.7, Kalaimagal Street, Anna Nedumpathai, Choolaimedu, Chennai – 600094">
+            </div>
+            <div class="form-group">
+                <label for="companyMobile">Mobile No:</label>
+                <input type="text" id="companyMobile" value="9962614327">
+            </div>
+            <div class="form-group">
+                <label for="companyGSTIN">GSTIN/UIN:</label>
+                <input type="text" id="companyGSTIN" value="33AJXPC6356P1ZG">
+            </div>
+            <div class="form-group">
+                <label for="companyState">State:</label>
+                <input type="text" id="companyState" value="Tamil Nadu">
+            </div>
+            <div class="form-group">
+                <label for="companyStateCode">State Code:</label>
+                <input type="text" id="companyStateCode" value="33">
+            </div>
+            <div class="form-group">
+                <label for="companyEmail">Email:</label>
+                <input type="email" id="companyEmail" value="halpowerconversion@gmail.com">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Customer Details</h2>
+            <div class="form-group">
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName">
+            </div>
+            <div class="form-group">
+                <label for="customerAddress">Customer Address:</label>
+                <input type="text" id="customerAddress">
+            </div>
+            <div class="form-group">
+                <label for="customerGSTIN">GSTIN/UIN:</label>
+                <input type="text" id="customerGSTIN">
+            </div>
+            <div class="form-group">
+                <label for="customerState">State:</label>
+                <input type="text" id="customerState" value="Tamil Nadu">
+            </div>
+            <div class="form-group">
+                <label for="customerStateCode">State Code:</label>
+                <input type="text" id="customerStateCode" value="33">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Invoice Details</h2>
+            <div class="form-group">
+                <label for="invoiceNumber">Invoice Number:</label>
+                <input type="text" id="invoiceNumber">
+            </div>
+            <div class="form-group">
+                <label for="invoiceDate">Invoice Date:</label>
+                <input type="date" id="invoiceDate">
+            </div>
+            <div class="form-group">
+                <label for="deliveryNote">Delivery Note:</label>
+                <input type="text" id="deliveryNote">
+            </div>
+            <div class="form-group">
+                <label for="paymentTerms">Mode/Terms of Payment:</label>
+                <input type="text" id="paymentTerms">
+            </div>
+            <div class="form-group">
+                <label for="referenceNo">Reference No. & Date:</label>
+                <input type="text" id="referenceNo">
+            </div>
+            <div class="form-group">
+                <label for="otherReference">Other References:</label>
+                <input type="text" id="otherReference">
+            </div>
+            <div class="form-group">
+                <label for="buyerOrder">Buyer Order Number:</label>
+                <input type="text" id="buyerOrder">
+            </div>
+            <div class="form-group">
+                <label for="buyerOrderDate">Buyer Order Date:</label>
+                <input type="date" id="buyerOrderDate">
+            </div>
+            <div class="form-group">
+                <label for="dispatchDoc">Dispatch Doc No:</label>
+                <input type="text" id="dispatchDoc">
+            </div>
+            <div class="form-group">
+                <label for="deliveryNoteDate">Delivery Note Date:</label>
+                <input type="date" id="deliveryNoteDate">
+            </div>
+            <div class="form-group">
+                <label for="dispatchedThrough">Dispatched through:</label>
+                <input type="text" id="dispatchedThrough">
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <input type="text" id="destination">
+            </div>
+            <div class="form-group">
+                <label for="termsOfDelivery">Terms of Delivery:</label>
+                <input type="text" id="termsOfDelivery">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Product Details</h2>
+            <div class="form-group">
+                <label for="productDescription">Description:</label>
+                <input type="text" id="productDescription">
+            </div>
+            <div class="form-group">
+                <label for="productHSN">HSN/SAC:</label>
+                <input type="text" id="productHSN">
+            </div>
+            <div class="form-group">
+                <label for="productQuantity">Quantity:</label>
+                <input type="number" id="productQuantity">
+            </div>
+            <div class="form-group">
+                <label for="productRate">Rate:</label>
+                <input type="number" id="productRate" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="productGSTRate">GST Rate (%):</label>
+                <input type="number" id="productGSTRate" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="productAdditionalDetails">Additional Details:</label>
+                <textarea id="productAdditionalDetails" rows="3"></textarea>
+            </div>
+            <button onclick="addProduct()">Add Product</button>
+        </div>
+
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>HSN/SAC</th>
+                    <th>Quantity</th>
+                    <th>Rate</th>
+                    <th>GST Rate</th>
+                    <th>Amount</th>
+                    <th>Additional Details</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <button onclick="generateInvoice()">Generate Invoice</button>
+        <button onclick="printInvoice()">Print Invoice</button>
+        <button onclick="generatePDF()" class="pdf-button">Download PDF</button>
+
+        <div id="invoicePreview" class="invoice-preview"></div>
+        <center>
+            <div>
+                <button style="margin-top: 10px;"><a href="../main.html" style="text-decoration: none; color: white;">Back</a></button>
+            </div>
+        </center>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
